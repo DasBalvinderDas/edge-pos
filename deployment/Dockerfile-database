@@ -1,14 +1,12 @@
-# Use an official MySQL runtime as a parent image
 FROM mysql:8.0
 
-# Set the root password for MySQL
 ENV MYSQL_ROOT_PASSWORD=rootroot
-
-# Set the default database
 ENV MYSQL_DATABASE=jsppos
 
-# Copy the modified schema.sql file to the container
-COPY schema.sql /docker-entrypoint-initdb.d/schema.sql
+# Delete any existing data directory
+RUN rm -rf /var/lib/mysql/*
 
-# Expose port 3306 for MySQL
+# Copy the schema.sql file to the container
+COPY schema.sql /docker-entrypoint-initdb.d/
+
 EXPOSE 3306
