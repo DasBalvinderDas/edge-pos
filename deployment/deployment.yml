@@ -13,11 +13,11 @@ spec:
         app: myapp
     spec:
       containers:
-        - name: webapp
+        - name: posimage
           image: gcr.io/[app-mod-gebu-trainees]/posimage:latest
           ports:
             - containerPort: 8080
-        - name: mysql
+        - name: databaseimage
           image: gcr.io/[app-mod-gebu-trainees]/databaseimage:latest
           env:
             - name: MYSQL_ROOT_PASSWORD
