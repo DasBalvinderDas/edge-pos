@@ -8,7 +8,7 @@ ENV MYSQL_ROOT_PASSWORD=rootroot
 ENV MYSQL_DATABASE=jsppos
 
 # Copy the modified schema.sql file to the container
-COPY schema_with_db_creation.sql /docker-entrypoint-initdb.d/schema.sql
+COPY schema.sql /docker-entrypoint-initdb.d/schema.sql
 
 # Expose port 3306 for MySQL
 EXPOSE 3306
