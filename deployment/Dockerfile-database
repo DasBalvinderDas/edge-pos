@@ -9,4 +9,7 @@ RUN rm -rf /var/lib/mysql/*
 # Copy the schema.sql file to the container
 COPY schema.sql /docker-entrypoint-initdb.d/
 
+# Add a volume to persist data
+VOLUME /var/lib/mysql
+
 EXPOSE 3306

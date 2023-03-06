@@ -14,11 +14,11 @@ spec:
     spec:
       containers:
         - name: posimage
-          image: gcr.io/[app-mod-gebu-trainees]/posimage:latest
+          image: gcr.io/app-mod-gebu-trainees/posimage:latest
           ports:
             - containerPort: 8080
         - name: databaseimage
-          image: gcr.io/[app-mod-gebu-trainees]/databaseimage:latest
+          image: gcr.io/app-mod-gebu-trainees/databaseimage:latest
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: rootroot
