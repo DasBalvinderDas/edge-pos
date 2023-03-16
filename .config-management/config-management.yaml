@@ -1,0 +1,27 @@
+apiVersion: configmanagement.gke.io/v1
+kind: ConfigManagement
+metadata:
+  name: config-management
+spec:
+  clusterName: config-management-operator-6b664fcb8b-zq5tq
+  enableMultiRepo: true
+  git:
+    syncRepo: https://github.com/DasBalvinderDas/edge-pos
+    syncBranch: main
+    secretType: gcenode
+  policyDir: "clusters"
+  sourceFormat: hierarchy
+  syncStatus: ["SYNCED", "SYNCING"]
+
+  # configuration for both POS1 and POS2 clusters
+  multiClusterRepo:
+    - name: myapp
+      clusters:
+        - name: pos1
+          sync:
+            branch: main
+            revision: HEAD
+        - name: pos2
+          sync:
+            branch: main
+            revision: HEAD
