@@ -1,0 +1,22 @@
+apiVersion: configmanagement.gke.io/v1
+kind: Sync
+metadata:
+  name: my-deployment
+spec:
+  syncRepo: git@github.com:DasBalvinderDas/edge-pos.git
+  syncBranch: main
+  syncRev: HEAD
+  syncStrategy: POLICY
+  clusterSelector:
+    matchLabels:
+      environment: production
+  syncRules:
+    - resourceTypes:
+        - deployments
+      namespaces:
+        - default
+    - resourceTypes:
+        - configmaps
+        - secrets
+      namespaces:
+        - default
