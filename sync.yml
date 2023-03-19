@@ -1,20 +1,28 @@
 apiVersion: configmanagement.gke.io/v1
-kind: Sync
+kind: ConfigManagement
 metadata:
-  name: myapp-sync
+  name: pos1-config-management
 spec:
-  syncRepo:
-    repoName: https://github.com/DasBalvinderDas/edge-pos
-    sourceFormat: yaml
-    secretType: none
+  clusterName: pos1
+  git:
+    syncRepo: https://github.com/DasBalvinderDas/edge-pos
     syncBranch: main
-  sync:
-    - name: myapp
-      sourceFormat: yaml
-      resources:
-        - kind: Deployment
-          name: myapp
-          apiVersion: apps/v1
-        - kind: Service
-          name: myapp
-          apiVersion: v1
+    secretType: ssh
+    syncRules:
+      - path: deployment.yaml
+        syncStrategy: apply
+
+---
+apiVersion: configmanagement.gke.io/v1
+kind: ConfigManagement
+metadata:
+  name: pos2-config-management
+spec:
+  clusterName: pos2
+  git:
+    syncRepo: https://github.com/DasBalvinderDas/edge-pos
+    syncBranch: main
+    secretType: ssh
+    syncRules:
+      - path: deployment.yaml
+        syncStrategy: apply
