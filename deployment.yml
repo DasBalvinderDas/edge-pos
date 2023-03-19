@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myapp
-  labels:
-    environment: production
 spec:
   selector:
     matchLabels:
@@ -13,12 +11,7 @@ spec:
     metadata:
       labels:
         app: myapp
-        environment: production
     spec:
-      volumes:
-        - name: deployment-config
-          configMap:
-            name: my-deployment
       containers:
         - name: posimage
           image: gcr.io/app-mod-gebu-trainees/posimage:latest
