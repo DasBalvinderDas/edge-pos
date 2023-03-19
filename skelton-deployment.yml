@@ -6,6 +6,9 @@ metadata:
     environment: production
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
   template:
     metadata:
       labels:
