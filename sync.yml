@@ -1,17 +1,20 @@
 apiVersion: configmanagement.gke.io/v1
 kind: Sync
 metadata:
-  name: my-deployment
+  name: myapp-sync
 spec:
-  syncRepo: https://github.com/DasBalvinderDas/edge-pos
-  syncBranch: main
-  syncRev: HEAD
-  syncStrategy: POLICY
-  clusterSelector:
-    matchLabels:
-      environment: production
-  syncRules:
-    - resourceTypes:
-        - deployments
-      namespaces:
-        - default
+  syncRepo:
+    repoName: https://github.com/DasBalvinderDas/edge-pos
+    sourceFormat: yaml
+    secretType: none
+    syncBranch: main
+  sync:
+    - name: myapp
+      sourceFormat: yaml
+      resources:
+        - kind: Deployment
+          name: myapp
+          apiVersion: apps/v1
+        - kind: Service
+          name: myapp
+          apiVersion: v1
