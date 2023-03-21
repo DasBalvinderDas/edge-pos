@@ -1,20 +1,9 @@
-apiVersion: configmanagement.gke.io/v1
-kind: ConfigManagement
-metadata:
-  name: pos1-config-management
-spec:
-  clusterName: pos1
-  git:
-    syncRepo: https://github.com/DasBalvinderDas/edge-pos
-    syncBranch: main
-
----
-apiVersion: configmanagement.gke.io/v1
-kind: ConfigManagement
-metadata:
-  name: pos2-config-management
-spec:
-  clusterName: pos2
-  git:
-    syncRepo: https://github.com/DasBalvinderDas/edge-pos
-    syncBranch: main
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: default
+resources:
+- deployment.yml
+syncRules:
+- syncStrategy: apply
+  resources:
+  - deployment.yml
