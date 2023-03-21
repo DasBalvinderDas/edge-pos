@@ -7,9 +7,6 @@ spec:
   git:
     syncRepo: https://github.com/DasBalvinderDas/edge-pos
     syncBranch: main
-    syncRules:
-      - path: deployment.yml
-        syncStrategy: apply
 
 ---
 apiVersion: configmanagement.gke.io/v1
@@ -21,6 +18,3 @@ spec:
   git:
     syncRepo: https://github.com/DasBalvinderDas/edge-pos
     syncBranch: main
-    syncRules:
-      - path: deployment.yml
-        syncStrategy: apply
