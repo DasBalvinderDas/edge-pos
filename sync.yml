@@ -7,9 +7,8 @@ spec:
   git:
     syncRepo: https://github.com/DasBalvinderDas/edge-pos
     syncBranch: main
-    secretType: ssh
     syncRules:
-      - path: deployment.yaml
+      - path: deployment.yml
         syncStrategy: apply
 
 ---
@@ -22,7 +21,6 @@ spec:
   git:
     syncRepo: https://github.com/DasBalvinderDas/edge-pos
     syncBranch: main
-    secretType: ssh
     syncRules:
-      - path: deployment.yaml
+      - path: deployment.yml
         syncStrategy: apply
